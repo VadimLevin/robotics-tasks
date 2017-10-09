@@ -1,0 +1,877 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     33241,        868]
+NotebookOptionsPosition[     32567,        841]
+NotebookOutlinePosition[     32913,        856]
+CellTagsIndexPosition[     32870,        853]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Head", " ", "links", " ", "definition"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"FromTorsoToHeadYaw", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0.1265"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromHeadYawToHeadPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Left", " ", "hand", " ", "links", " ", "definition"}], "*)"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"FromTorsoToLShoulderPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.098", ",", "0.1"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLShoulderPitchToLShoulderRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLShoulderRollToLElbowYaw", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.105", ",", "0.015", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLElbowYawToLElbowRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLElbowRollToLWristYaw", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.05595", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLWristYawToLHand", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.05775", ",", "0.", ",", 
+       RowBox[{"-", "0.01231"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Right", " ", "hand", " ", "links", " ", "definition"}], "*)"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"FromTorsoToRShoulderPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", 
+       RowBox[{"-", "0.098"}], ",", "0.1"}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRShoulderPitchToRShoulderRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRShoulderRollToRElbowYaw", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.105", ",", 
+       RowBox[{"-", "0.015"}], ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRElbowYawToRElbowRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRElbowRollToRWristYaw", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.05595", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRWristYawToRHand", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.05775", ",", "0.", ",", 
+       RowBox[{"-", "0.01231"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Left", " ", "leg", " ", "links", " ", "definition"}], "*)"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"FromTorsoToLHipYawPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.05", ",", 
+       RowBox[{"-", "0.085"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLHipYawPitchToLHipRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLHipRollToLHipPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLHipPitchToLKneePitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", 
+       RowBox[{"-", "0.1"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLKneePitchToLAnklePitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", 
+       RowBox[{"-", "0.1029"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLAnklePitchToLAnkleRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromLAnkleRollToLFoot", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", 
+       RowBox[{"-", "0.04519"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"(*", 
+    RowBox[{"Right", " ", "leg", " ", "links", " ", "definition"}], "*)"}], 
+   "\n", 
+   RowBox[{
+    RowBox[{"FromTorsoToRHipYawPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", 
+       RowBox[{"-", "0.05"}], ",", 
+       RowBox[{"-", "0.085"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRHipYawPitchToRHipRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRHipRollToRHipPitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRHipPitchToRKneePitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", 
+       RowBox[{"-", "0.1"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRKneePitchToRAnklePitch", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", 
+       RowBox[{"-", "0.1029"}]}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRAnklePitchToRAnkleRoll", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", "0."}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"FromRAnkleRollToRFoot", "=", 
+     RowBox[{"{", 
+      RowBox[{"0.", ",", "0.", ",", 
+       RowBox[{"-", "0.04519"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"ForwardKinematicArm", "[", 
+      RowBox[{
+      "armAnglesArray_", ",", " ", "armLinksArray_", ",", " ", 
+       "armDisplacementFromTorso_"}], "]"}], ":=", 
+     RowBox[{"Module", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+        "shoulderYangle", ",", " ", "shoulderZangle", ",", " ", "elbowXangle",
+          ",", " ", "\[IndentingNewLine]", "elbowZangle", ",", " ", 
+         "wristXangle", ",", " ", "fingersAngle", ",", "fromShoulderToElbow", 
+         ",", " ", "fromElbowToWrist", ",", " ", "fromWristToHand", ",", " ", 
+         "shoulderRotationMatrix", ",", "\[IndentingNewLine]", 
+         "elbowRotationMatrix", ",", " ", "wristRotationMatrix"}], "}"}], ",",
+        "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "shoulderYangle", ",", " ", "shoulderZangle", ",", " ", 
+           "elbowXangle", ",", " ", "elbowZangle", ",", " ", "wristXangle", 
+           ",", " ", "fingersAngle"}], "}"}], "  ", "=", " ", 
+         "armAnglesArray"}], ";", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "fromShoulderToElbow", ",", " ", "fromElbowToWrist", ",", " ", 
+           "fromWristToHand"}], "}"}], " ", "=", " ", "armLinksArray"}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"shoulderRotationMatrix", " ", "=", " ", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Cos", "[", "shoulderYangle", "]"}], " ", 
+              RowBox[{"Cos", "[", "shoulderZangle", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"-", 
+               RowBox[{"Cos", "[", "shoulderYangle", "]"}]}], " ", 
+              RowBox[{"Sin", "[", "shoulderZangle", "]"}]}], ",", 
+             RowBox[{"Sin", "[", "shoulderYangle", "]"}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Sin", "[", "shoulderZangle", "]"}], ",", 
+             RowBox[{"Cos", "[", "shoulderZangle", "]"}], ",", "0"}], "}"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", 
+               RowBox[{"Cos", "[", "shoulderZangle", "]"}]}], " ", 
+              RowBox[{"Sin", "[", "shoulderYangle", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"Sin", "[", "shoulderYangle", "]"}], " ", 
+              RowBox[{"Sin", "[", "shoulderZangle", "]"}]}], ",", 
+             RowBox[{"Cos", "[", "shoulderYangle", "]"}]}], "}"}]}], 
+          "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"elbowRotationMatrix", "=", 
+         RowBox[{"{", "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"Cos", "[", "elbowZangle", "]"}], ",", 
+             RowBox[{"-", 
+              RowBox[{"Sin", "[", "elbowZangle", "]"}]}], ",", "0"}], "}"}], 
+           ",", "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Cos", "[", "elbowXangle", "]"}], " ", 
+              RowBox[{"Sin", "[", "elbowZangle", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"Cos", "[", "elbowXangle", "]"}], " ", 
+              RowBox[{"Cos", "[", "elbowZangle", "]"}]}], ",", 
+             RowBox[{"-", 
+              RowBox[{"Sin", "[", "elbowXangle", "]"}]}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Sin", "[", "elbowXangle", "]"}], " ", 
+              RowBox[{"Sin", "[", "elbowZangle", "]"}]}], ",", 
+             RowBox[{
+              RowBox[{"Cos", "[", "elbowZangle", "]"}], " ", 
+              RowBox[{"Sin", "[", "elbowXangle", "]"}]}], ",", 
+             RowBox[{"Cos", "[", "elbowXangle", "]"}]}], "}"}]}], 
+          "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"wristRotationMatrix", " ", "=", " ", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"Cos", "[", "wristXangle", "]"}], ",", 
+             RowBox[{"-", 
+              RowBox[{"Sin", "[", "wristXangle", "]"}]}]}], "}"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", 
+             RowBox[{"Sin", "[", "wristXangle", "]"}], ",", 
+             RowBox[{"Cos", "[", "wristXangle", "]"}]}], "}"}]}], 
+          "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"handInWristCoordinateSystem", " ", "=", " ", 
+         RowBox[{"wristRotationMatrix", ".", "fromWristToHand"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"handInElbowCoordinateSystem", " ", "=", " ", 
+         RowBox[{"elbowRotationMatrix", ".", 
+          RowBox[{"(", 
+           RowBox[{
+           "handInWristCoordinateSystem", " ", "+", " ", "fromElbowToWrist"}],
+            ")"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"handInShoulderCoordinateSystem", " ", "=", " ", 
+         RowBox[{"shoulderRotationMatrix", ".", 
+          RowBox[{"(", 
+           RowBox[{
+           "handInElbowCoordinateSystem", " ", "+", " ", 
+            "fromShoulderToElbow"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", 
+         RowBox[{
+         "handInShoulderCoordinateSystem", " ", "+", " ", 
+          "armDisplacementFromTorso"}], "]"}], ";"}]}], "\[IndentingNewLine]",
+       "]"}]}], ";"}]}]}]], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQvSHpUsL3da8dXXIcUkC0/9nQShAt0CDUD6JrTpbP
+BNGvXvQuBdHv8pjWgWhrs7qNIHoLs8QOEL1gtfUuEH11eto9EC2j8u8niNZg
+vP8XRPNwav8H0Ttir/74CaTvBLtZ/ALS69Tt3UD0nS31gWD+vd95IPrMzK35
+ILpItmYSiI7KngKmF50qmwaim+b0zgHREfJnFoLo9AeWi0B09ETOdSD6pU3d
+BhDd8/frfhA960DvYRCtHvniOohOWpP3C0S/yVQMVFgPNPf9MTAtJP4pHER3
+GPPEgOiHF4oSQLTMXc4kEK3xlyEdRP99blYKon/7bVoEornqVy8D0QA2nMez
+
+  "]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"forwardKinematicsLArmSolution", " ", "=", 
+   RowBox[{"ForwardKinematicArm", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       SubscriptBox["\[Theta]", "1"], ",", " ", 
+       SubscriptBox["\[Theta]", "2"], ",", " ", 
+       SubscriptBox["\[Theta]", "3"], ",", " ", 
+       SubscriptBox["\[Theta]", "4"], ",", " ", 
+       SubscriptBox["\[Theta]", "5"], ",", " ", 
+       SubscriptBox["\[Theta]", "6"]}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{
+      "FromLShoulderRollToLElbowYaw", ",", " ", "FromLElbowRollToLWristYaw", 
+       ",", " ", "FromLWristYawToLHand"}], "}"}], ",", " ", 
+     "FromTorsoToLShoulderPitch"}], "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.715617429594514*^9, 3.7156175179042907`*^9}, {
+   3.715617559389962*^9, 3.7156176197459135`*^9}, {3.7156177000550337`*^9, 
+   3.715617702311671*^9}, 3.715617774463915*^9, {3.715617808835602*^9, 
+   3.7156178537934904`*^9}, {3.7156184315466843`*^9, 3.715618463112486*^9}, {
+   3.7156187977193623`*^9, 3.7156188610295677`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"MatrixForm", "@", "forwardKinematicsLArmSolution"}]], "Input",
+ CellChangeTimes->{{3.715618863153592*^9, 3.715618868215616*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{"(", "\[NoBreak]", 
+   TagBox[GridBox[{
+      {
+       RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.015`", "\[VeryThinSpace]", "-", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Cos", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}]}], "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], ")"}]}], 
+        "+", 
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Cos", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}], "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], ")"}]}], 
+        "+", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.105`", "\[VeryThinSpace]", "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], 
+          ")"}]}]}]},
+      {
+       RowBox[{"0.098`", "\[VeryThinSpace]", "+", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.015`", "\[VeryThinSpace]", "-", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Cos", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}]}], "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], ")"}]}], 
+        "+", 
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.105`", "\[VeryThinSpace]", "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], 
+          ")"}]}]}]},
+      {
+       RowBox[{"0.1`", "\[VeryThinSpace]", "+", 
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.015`", "\[VeryThinSpace]", "-", 
+           RowBox[{
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Cos", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}]}], "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], ")"}]}], 
+        "+", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "-", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Cos", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}], "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "+", 
+           RowBox[{
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], ")"}]}], 
+        "-", 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"0.105`", "\[VeryThinSpace]", "+", 
+           RowBox[{"0.1137`", " ", 
+            RowBox[{"Cos", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}]}], "-", 
+           RowBox[{
+            RowBox[{"Sin", "[", 
+             SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+            RowBox[{"(", 
+             RowBox[{"0.`", "\[VeryThinSpace]", "+", 
+              RowBox[{"0.01231`", " ", 
+               RowBox[{"Sin", "[", 
+                SubscriptBox["\[Theta]", "5"], "]"}]}]}], ")"}]}]}], ")"}]}]}]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    Column], "\[NoBreak]", ")"}],
+  Function[BoxForm`e$, 
+   MatrixForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.7156188687774625`*^9, 3.715695933035*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ShoulderYRotation", " ", "=", " ", 
+   RowBox[{"RotationMatrix", "[", " ", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "1"], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "1", ",", " ", "0"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ShoulderZRotation", " ", "=", " ", 
+   RowBox[{"RotationMatrix", "[", " ", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "2"], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ShoulderRotationMatrix", " ", "=", " ", 
+   RowBox[{"ShoulderYRotation", ".", "ShoulderZRotation"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<Shoulder rotation matrix:\\n\>\"", ",", " ", 
+    RowBox[{"MatrixForm", "@", "ShoulderRotationMatrix"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ElbowXRotation", " ", "=", " ", 
+   RowBox[{"RotationMatrix", "[", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "3"], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "0", ",", " ", "0"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ElbowZRotation", " ", "=", " ", 
+   RowBox[{"RotationMatrix", "[", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "4"], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ElbowRotationMatrix", " ", "=", 
+   RowBox[{"ElbowXRotation", ".", "ElbowZRotation"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Print", "[", 
+  RowBox[{"\"\<Elbow rotation Matrix:\\n\>\"", ",", " ", 
+   RowBox[{"MatrixForm", "@", "ElbowRotationMatrix"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WristXRotation", " ", "=", " ", 
+   RowBox[{"RotationMatrix", "[", 
+    RowBox[{
+     SubscriptBox["\[Theta]", "5"], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", " ", "0", ",", " ", "0"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"WristRotationMatrix", " ", "=", " ", "WristXRotation"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Print", "[", 
+   RowBox[{"\"\<Wrist rotation matrix:\\n\>\"", ",", " ", 
+    RowBox[{"MatrixForm", "@", "WristRotationMatrix"}]}], "]"}], 
+  ";"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.715612698309025*^9, 3.715612767979167*^9}, {
+  3.7156128566598363`*^9, 3.7156131414737167`*^9}, {3.715613182340575*^9, 
+  3.7156131958578587`*^9}, {3.715616361876231*^9, 3.7156163878639965`*^9}, {
+  3.7156166482782993`*^9, 3.7156166982875586`*^9}, {3.7156168354220324`*^9, 
+  3.715616884005347*^9}, {3.71561789141803*^9, 3.7156179006319637`*^9}, {
+  3.715617959066924*^9, 3.715617960921852*^9}, {3.7156180477569776`*^9, 
+  3.715618050320047*^9}, {3.7156182833684893`*^9, 3.7156182860297365`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Shoulder rotation matrix:\\n\"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}]}], 
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"Cos", "[", 
+           SubscriptBox["\[Theta]", "2"], "]"}]}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}]}], 
+        RowBox[{"Sin", "[", 
+         SubscriptBox["\[Theta]", "2"], "]"}]},
+       {
+        RowBox[{"Sin", "[", 
+         SubscriptBox["\[Theta]", "1"], "]"}], 
+        RowBox[{"Cos", "[", 
+         SubscriptBox["\[Theta]", "1"], "]"}], "0"},
+       {
+        RowBox[{
+         RowBox[{"-", 
+          RowBox[{"Cos", "[", 
+           SubscriptBox["\[Theta]", "1"], "]"}]}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}]}], 
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "1"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "2"], "]"}]}], 
+        RowBox[{"Cos", "[", 
+         SubscriptBox["\[Theta]", "2"], "]"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Shoulder rotation matrix:\n", 
+   MatrixForm[{{Cos[
+        Subscript[$CellContext`\[Theta], 1]] Cos[
+        Subscript[$CellContext`\[Theta], 2]], -Cos[
+        Subscript[$CellContext`\[Theta], 2]] Sin[
+        Subscript[$CellContext`\[Theta], 1]], 
+      Sin[
+       Subscript[$CellContext`\[Theta], 2]]}, {
+      Sin[
+       Subscript[$CellContext`\[Theta], 1]], 
+      Cos[
+       Subscript[$CellContext`\[Theta], 1]], 0}, {-Cos[
+        Subscript[$CellContext`\[Theta], 1]] Sin[
+        Subscript[$CellContext`\[Theta], 2]], Sin[
+        Subscript[$CellContext`\[Theta], 1]] Sin[
+        Subscript[$CellContext`\[Theta], 2]], 
+      Cos[
+       Subscript[$CellContext`\[Theta], 2]]}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7156130308967705`*^9, 3.7156130409566813`*^9}, 
+   3.715613141900423*^9, {3.7156166765391192`*^9, 3.715616698656525*^9}, 
+   3.7156168426635046`*^9, {3.715616873229925*^9, 3.7156168842259026`*^9}, 
+   3.715617901661674*^9, {3.715617951039941*^9, 3.7156179612595162`*^9}, 
+   3.715618051362162*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Elbow rotation Matrix:\\n\"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {
+        RowBox[{"Cos", "[", 
+         SubscriptBox["\[Theta]", "4"], "]"}], 
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "4"], "]"}]}], "0"},
+       {
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "4"], "]"}]}], 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "4"], "]"}]}], 
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "3"], "]"}]}]},
+       {
+        RowBox[{
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "3"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "4"], "]"}]}], 
+        RowBox[{
+         RowBox[{"Cos", "[", 
+          SubscriptBox["\[Theta]", "4"], "]"}], " ", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "3"], "]"}]}], 
+        RowBox[{"Cos", "[", 
+         SubscriptBox["\[Theta]", "3"], "]"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Elbow rotation Matrix:\n", 
+   MatrixForm[{{
+      Cos[
+       Subscript[$CellContext`\[Theta], 4]], -Sin[
+        Subscript[$CellContext`\[Theta], 4]], 0}, {Cos[
+        Subscript[$CellContext`\[Theta], 3]] Sin[
+        Subscript[$CellContext`\[Theta], 4]], Cos[
+        Subscript[$CellContext`\[Theta], 3]] Cos[
+        Subscript[$CellContext`\[Theta], 4]], -Sin[
+        Subscript[$CellContext`\[Theta], 3]]}, {Sin[
+        Subscript[$CellContext`\[Theta], 3]] Sin[
+        Subscript[$CellContext`\[Theta], 4]], Cos[
+        Subscript[$CellContext`\[Theta], 4]] Sin[
+        Subscript[$CellContext`\[Theta], 3]], 
+      Cos[
+       Subscript[$CellContext`\[Theta], 3]]}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7156130308967705`*^9, 3.7156130409566813`*^9}, 
+   3.715613141900423*^9, {3.7156166765391192`*^9, 3.715616698656525*^9}, 
+   3.7156168426635046`*^9, {3.715616873229925*^9, 3.7156168842259026`*^9}, 
+   3.715617901661674*^9, {3.715617951039941*^9, 3.7156179612595162`*^9}, 
+   3.7156180513651514`*^9}],
+
+Cell[BoxData[
+ InterpretationBox[
+  RowBox[{"\<\"Wrist rotation matrix:\\n\"\>", "\[InvisibleSpace]", 
+   TagBox[
+    RowBox[{"(", "\[NoBreak]", GridBox[{
+       {"1", "0", "0"},
+       {"0", 
+        RowBox[{"Cos", "[", 
+         SubscriptBox["\[Theta]", "5"], "]"}], 
+        RowBox[{"-", 
+         RowBox[{"Sin", "[", 
+          SubscriptBox["\[Theta]", "5"], "]"}]}]},
+       {"0", 
+        RowBox[{"Sin", "[", 
+         SubscriptBox["\[Theta]", "5"], "]"}], 
+        RowBox[{"Cos", "[", 
+         SubscriptBox["\[Theta]", "5"], "]"}]}
+      },
+      GridBoxAlignment->{
+       "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
+        "Rows" -> {{Baseline}}, "RowsIndexed" -> {}},
+      GridBoxSpacings->{"Columns" -> {
+          Offset[0.27999999999999997`], {
+           Offset[0.7]}, 
+          Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+          Offset[0.2], {
+           Offset[0.4]}, 
+          Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}],
+    Function[BoxForm`e$, 
+     MatrixForm[BoxForm`e$]]]}],
+  SequenceForm["Wrist rotation matrix:\n", 
+   MatrixForm[{{1, 0, 0}, {0, 
+      Cos[
+       Subscript[$CellContext`\[Theta], 5]], -Sin[
+        Subscript[$CellContext`\[Theta], 5]]}, {0, 
+      Sin[
+       Subscript[$CellContext`\[Theta], 5]], 
+      Cos[
+       Subscript[$CellContext`\[Theta], 5]]}}]],
+  Editable->False]], "Print",
+ CellChangeTimes->{{3.7156130308967705`*^9, 3.7156130409566813`*^9}, 
+   3.715613141900423*^9, {3.7156166765391192`*^9, 3.715616698656525*^9}, 
+   3.7156168426635046`*^9, {3.715616873229925*^9, 3.7156168842259026`*^9}, 
+   3.715617901661674*^9, {3.715617951039941*^9, 3.7156179612595162`*^9}, 
+   3.715618051367654*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[BoxData["ElbowRotatio"], "Input",
+ CellChangeTimes->{{3.715612963221003*^9, 3.7156129683801413`*^9}}]
+},
+WindowSize->{1366, 685},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 11238, 280, 1192, "Input"],
+Cell[11799, 302, 1050, 22, 52, "Input"],
+Cell[CellGroupData[{
+Cell[12874, 328, 152, 2, 31, "Input"],
+Cell[13029, 332, 9067, 227, 110, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22133, 564, 2893, 72, 252, "Input"],
+Cell[CellGroupData[{
+Cell[25051, 640, 2844, 74, 78, "Print"],
+Cell[27898, 716, 2826, 72, 78, "Print"],
+Cell[30727, 790, 1703, 44, 77, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[32457, 838, 106, 1, 31, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

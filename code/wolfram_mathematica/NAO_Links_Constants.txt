@@ -1,0 +1,43 @@
+(*
+Head links definition
+*)
+FromTorsoToHeadYaw = {0, 0, 0.1265};
+FromHeadYawToHeadPitch = {0, 0, 0};
+(*
+Left hand links definition
+*)
+FromTorsoToLShoulderPitch = {0., 0.098, 0.1};
+FromLShoulderPitchToLShoulderRoll = {0., 0., 0.};
+FromLShoulderRollToLElbowYaw = {0.105, 0.015, 0.};
+FromLElbowYawToLElbowRoll = {0., 0., 0.};
+FromLElbowRollToLWristYaw = {0.05595, 0., 0.};
+FromLWristYawToLHand = {0.05775, 0., -0.01231};
+(*
+Right hand links definition
+*)
+FromTorsoToRShoulderPitch = {0., -0.098, 0.1};
+FromRShoulderPitchToRShoulderRoll = {0., 0., 0.};
+FromRShoulderRollToRElbowYaw = {0.105, -0.015, 0.};
+FromRElbowYawToRElbowRoll = {0., 0., 0.};
+FromRElbowRollToRWristYaw = {0.05595, 0., 0.};
+FromRWristYawToRHand = {0.05775, 0., -0.01231};
+(*
+Left leg links definition
+*)
+FromTorsoToLHipYawPitch = {0., 0.05, -0.085};
+FromLHipYawPitchToLHipRoll = {0., 0., 0.};
+FromLHipRollToLHipPitch = {0., 0., 0.};
+FromLHipPitchToLKneePitch = {0., 0., -0.1};
+FromLKneePitchToLAnklePitch = {0., 0., -0.1029};
+FromLAnklePitchToLAnkleRoll = {0., 0., 0.};
+FromLAnkleRollToLFoot = {0., 0., -0.04519};
+(*
+Right leg links definition
+*)
+FromTorsoToRHipYawPitch = {0., -0.05, -0.085};
+FromRHipYawPitchToRHipRoll = {0., 0., 0.};
+FromRHipRollToRHipPitch = {0., 0., 0.};
+FromRHipPitchToRKneePitch = {0., 0., -0.1};
+FromRKneePitchToRAnklePitch = {0., 0., -0.1029};
+FromRAnklePitchToRAnkleRoll = {0., 0., 0.};
+FromRAnkleRollToRFoot = {0., 0., -0.04519};
