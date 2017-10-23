@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     33241,        868]
-NotebookOptionsPosition[     32567,        841]
-NotebookOutlinePosition[     32913,        856]
-CellTagsIndexPosition[     32870,        853]
+NotebookDataLength[     32670,        851]
+NotebookOptionsPosition[     31926,        821]
+NotebookOutlinePosition[     32270,        836]
+CellTagsIndexPosition[     32227,        833]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -31,11 +31,10 @@ Cell[BoxData[
    RowBox[{
     RowBox[{"FromHeadYawToHeadPitch", "=", 
      RowBox[{"{", 
-      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}], 
-   "\[IndentingNewLine]", 
+      RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";"}], "\n", 
    RowBox[{"(*", 
     RowBox[{"Left", " ", "hand", " ", "links", " ", "definition"}], "*)"}], 
-   "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"FromTorsoToLShoulderPitch", "=", 
      RowBox[{"{", 
@@ -60,10 +59,10 @@ Cell[BoxData[
     RowBox[{"FromLWristYawToLHand", "=", 
      RowBox[{"{", 
       RowBox[{"0.05775", ",", "0.", ",", 
-       RowBox[{"-", "0.01231"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"-", "0.01231"}]}], "}"}]}], ";"}], "\n", 
    RowBox[{"(*", 
     RowBox[{"Right", " ", "hand", " ", "links", " ", "definition"}], "*)"}], 
-   "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"FromTorsoToRShoulderPitch", "=", 
      RowBox[{"{", 
@@ -90,10 +89,10 @@ Cell[BoxData[
     RowBox[{"FromRWristYawToRHand", "=", 
      RowBox[{"{", 
       RowBox[{"0.05775", ",", "0.", ",", 
-       RowBox[{"-", "0.01231"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"-", "0.01231"}]}], "}"}]}], ";"}], "\n", 
    RowBox[{"(*", 
     RowBox[{"Left", " ", "leg", " ", "links", " ", "definition"}], "*)"}], 
-   "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"FromTorsoToLHipYawPitch", "=", 
      RowBox[{"{", 
@@ -125,10 +124,10 @@ Cell[BoxData[
     RowBox[{"FromLAnkleRollToLFoot", "=", 
      RowBox[{"{", 
       RowBox[{"0.", ",", "0.", ",", 
-       RowBox[{"-", "0.04519"}]}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+       RowBox[{"-", "0.04519"}]}], "}"}]}], ";"}], "\n", 
    RowBox[{"(*", 
     RowBox[{"Right", " ", "leg", " ", "links", " ", "definition"}], "*)"}], 
-   "\n", 
+   "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"FromTorsoToRHipYawPitch", "=", 
      RowBox[{"{", 
@@ -184,7 +183,7 @@ Cell[BoxData[
         RowBox[{
          RowBox[{"{", 
           RowBox[{
-          "shoulderYangle", ",", " ", "shoulderZangle", ",", " ", 
+          "shoulderZangle", ",", " ", "shoulderYangle", ",", " ", 
            "elbowXangle", ",", " ", "elbowZangle", ",", " ", "wristXangle", 
            ",", " ", "fingersAngle"}], "}"}], "  ", "=", " ", 
          "armAnglesArray"}], ";", "\[IndentingNewLine]", 
@@ -195,134 +194,118 @@ Cell[BoxData[
            "fromWristToHand"}], "}"}], " ", "=", " ", "armLinksArray"}], ";", 
         "\[IndentingNewLine]", 
         RowBox[{"shoulderRotationMatrix", " ", "=", " ", 
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Cos", "[", "shoulderYangle", "]"}], " ", 
-              RowBox[{"Cos", "[", "shoulderZangle", "]"}]}], ",", 
-             RowBox[{
-              RowBox[{"-", 
-               RowBox[{"Cos", "[", "shoulderYangle", "]"}]}], " ", 
-              RowBox[{"Sin", "[", "shoulderZangle", "]"}]}], ",", 
-             RowBox[{"Sin", "[", "shoulderYangle", "]"}]}], "}"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"Sin", "[", "shoulderZangle", "]"}], ",", 
-             RowBox[{"Cos", "[", "shoulderZangle", "]"}], ",", "0"}], "}"}], 
-           ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"-", 
-               RowBox[{"Cos", "[", "shoulderZangle", "]"}]}], " ", 
-              RowBox[{"Sin", "[", "shoulderYangle", "]"}]}], ",", 
-             RowBox[{
-              RowBox[{"Sin", "[", "shoulderYangle", "]"}], " ", 
-              RowBox[{"Sin", "[", "shoulderZangle", "]"}]}], ",", 
-             RowBox[{"Cos", "[", "shoulderYangle", "]"}]}], "}"}]}], 
-          "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"elbowRotationMatrix", "=", 
-         RowBox[{"{", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{"Cos", "[", "elbowZangle", "]"}], ",", 
-             RowBox[{"-", 
-              RowBox[{"Sin", "[", "elbowZangle", "]"}]}], ",", "0"}], "}"}], 
-           ",", "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Cos", "[", "elbowXangle", "]"}], " ", 
-              RowBox[{"Sin", "[", "elbowZangle", "]"}]}], ",", 
-             RowBox[{
-              RowBox[{"Cos", "[", "elbowXangle", "]"}], " ", 
-              RowBox[{"Cos", "[", "elbowZangle", "]"}]}], ",", 
-             RowBox[{"-", 
-              RowBox[{"Sin", "[", "elbowXangle", "]"}]}]}], "}"}], ",", 
-           RowBox[{"{", 
-            RowBox[{
-             RowBox[{
-              RowBox[{"Sin", "[", "elbowXangle", "]"}], " ", 
-              RowBox[{"Sin", "[", "elbowZangle", "]"}]}], ",", 
-             RowBox[{
-              RowBox[{"Cos", "[", "elbowZangle", "]"}], " ", 
-              RowBox[{"Sin", "[", "elbowXangle", "]"}]}], ",", 
-             RowBox[{"Cos", "[", "elbowXangle", "]"}]}], "}"}]}], 
-          "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"wristRotationMatrix", " ", "=", " ", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"{", 
-            RowBox[{"1", ",", "0", ",", "0"}], "}"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"0", ",", 
-             RowBox[{"Cos", "[", "wristXangle", "]"}], ",", 
-             RowBox[{"-", 
-              RowBox[{"Sin", "[", "wristXangle", "]"}]}]}], "}"}], ",", 
-           "\[IndentingNewLine]", 
-           RowBox[{"{", 
-            RowBox[{"0", ",", 
-             RowBox[{"Sin", "[", "wristXangle", "]"}], ",", 
-             RowBox[{"Cos", "[", "wristXangle", "]"}]}], "}"}]}], 
-          "\[IndentingNewLine]", "}"}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"handInWristCoordinateSystem", " ", "=", " ", 
-         RowBox[{"wristRotationMatrix", ".", "fromWristToHand"}]}], ";", 
-        "\[IndentingNewLine]", 
-        RowBox[{"handInElbowCoordinateSystem", " ", "=", " ", 
-         RowBox[{"elbowRotationMatrix", ".", 
-          RowBox[{"(", 
-           RowBox[{
-           "handInWristCoordinateSystem", " ", "+", " ", "fromElbowToWrist"}],
-            ")"}]}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"handInShoulderCoordinateSystem", " ", "=", " ", 
-         RowBox[{"shoulderRotationMatrix", ".", 
-          RowBox[{"(", 
-           RowBox[{
-           "handInElbowCoordinateSystem", " ", "+", " ", 
-            "fromShoulderToElbow"}], ")"}]}]}], ";", "\[IndentingNewLine]", 
-        RowBox[{"Return", "[", 
          RowBox[{
-         "handInShoulderCoordinateSystem", " ", "+", " ", 
-          "armDisplacementFromTorso"}], "]"}], ";"}]}], "\[IndentingNewLine]",
-       "]"}]}], ";"}]}]}]], "Input",
+          RowBox[{"RotationMatrix", "[", 
+           RowBox[{"shoulderYangle", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "1", ",", " ", "0"}], "}"}]}], "]"}], ".", 
+          RowBox[{"RotationMatrix", "[", 
+           RowBox[{"shoulderZangle", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}]}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"elbowRotationMatrix", "=", 
+         RowBox[{
+          RowBox[{"RotationMatrix", "[", 
+           RowBox[{"elbowXangle", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", " ", "0", ",", " ", "0"}], "}"}]}], "]"}], ".", 
+          RowBox[{"RotationMatrix", "[", 
+           RowBox[{"elbowZangle", ",", " ", 
+            RowBox[{"{", 
+             RowBox[{"0", ",", " ", "0", ",", " ", "1"}], "}"}]}], "]"}]}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"wristRotationMatrix", " ", "=", " ", 
+         RowBox[{"RotationMatrix", "[", 
+          RowBox[{"wristXangle", ",", " ", 
+           RowBox[{"{", 
+            RowBox[{"1", ",", " ", "0", ",", " ", "0"}], "}"}]}], "]"}]}], 
+        ";", "\[IndentingNewLine]", 
+        RowBox[{"handInElbowCoordinateSystem", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"wristRotationMatrix", ".", "fromWristToHand"}], " ", "+", 
+          " ", "fromElbowToWrist"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"handInShoulderCoordinateSystem", " ", "=", " ", 
+         RowBox[{
+          RowBox[{"elbowRotationMatrix", ".", "handInElbowCoordinateSystem"}],
+           "  ", "+", "fromShoulderToElbow"}]}], ";", "\[IndentingNewLine]", 
+        RowBox[{"handInTorsoCoordinateSystem", " ", "=", " ", 
+         RowBox[{
+          RowBox[{
+          "shoulderRotationMatrix", ".", "handInShoulderCoordinateSystem"}], 
+          " ", "+", " ", "armDisplacementFromTorso"}]}], ";", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Return", "[", "handInTorsoCoordinateSystem", "]"}], ";"}]}], 
+      "\[IndentingNewLine]", "]"}]}], ";"}]}]}]], "Input",
  CellChangeTimes->CompressedData["
-1:eJxTTMoPSmViYGAQBWIQvSHpUsL3da8dXXIcUkC0/9nQShAt0CDUD6JrTpbP
-BNGvXvQuBdHv8pjWgWhrs7qNIHoLs8QOEL1gtfUuEH11eto9EC2j8u8niNZg
-vP8XRPNwav8H0Ttir/74CaTvBLtZ/ALS69Tt3UD0nS31gWD+vd95IPrMzK35
-ILpItmYSiI7KngKmF50qmwaim+b0zgHREfJnFoLo9AeWi0B09ETOdSD6pU3d
-BhDd8/frfhA960DvYRCtHvniOohOWpP3C0S/yVQMVFgPNPf9MTAtJP4pHER3
-GPPEgOiHF4oSQLTMXc4kEK3xlyEdRP99blYKon/7bVoEornqVy8D0QA2nMez
-
+1:eJwdzVkowwEABvA/nrY8SDkeJlsRxYPQwjRHGl7IFYZaf8dyNCWGWhtKeTBy
+RBjNRCuamSkpR9kUbVn/2niYOR5cc5djNOz7P3z9+l6+j0O2Ftf7EwTB9gXq
+SUr0qXNn5bRk1sFCa1k3DOoJHoayw84peH+rXIRPEn8d5HHla9AYEL4J1cu8
+LWifbHBBVtSvB8b6nXthICPuD27W2L88Pp0lgpRvn7qYDAF0GhVFdHf9SKBl
+aqMVtkXIRqGweZxWcySdgH0qpQpWRFrmofgiVQOrRhg6eJcu18NB7/sunN5T
+7sOYytsTSK5IvuFDI6eIverbfT6gDQ57K4cDSYHV8NLWJoKsMwYJY72EGHpv
+uB3wp8CggUzF8hK8DhllPhncWXMVVBjM3jFFQtOeOx5STeuJ0OGpToYCd54c
+djU+9sKEWmoQkq9xSsjbEc5AfmmuCvanXamhote1AFf4VhP9s802Q7PUcQxn
+x0Q2+i+fOIXR2hcXbB+SfsBQba0H/gO+kTTl
   "]],
 
+Cell[CellGroupData[{
+
 Cell[BoxData[
- RowBox[{
-  RowBox[{"forwardKinematicsLArmSolution", " ", "=", 
-   RowBox[{"ForwardKinematicArm", "[", 
-    RowBox[{
-     RowBox[{"{", 
-      RowBox[{
-       SubscriptBox["\[Theta]", "1"], ",", " ", 
-       SubscriptBox["\[Theta]", "2"], ",", " ", 
-       SubscriptBox["\[Theta]", "3"], ",", " ", 
-       SubscriptBox["\[Theta]", "4"], ",", " ", 
-       SubscriptBox["\[Theta]", "5"], ",", " ", 
-       SubscriptBox["\[Theta]", "6"]}], "}"}], ",", " ", 
-     RowBox[{"{", 
-      RowBox[{
-      "FromLShoulderRollToLElbowYaw", ",", " ", "FromLElbowRollToLWristYaw", 
-       ",", " ", "FromLWristYawToLHand"}], "}"}], ",", " ", 
-     "FromTorsoToLShoulderPitch"}], "]"}]}], ";"}]], "Input",
+ RowBox[{"forwardKinematicsLArmSolution", " ", "=", 
+  RowBox[{"ForwardKinematicArm", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0.1324633806", ",", 
+      RowBox[{"-", "2.08566956"}], ",", "2.08566956", ",", 
+      RowBox[{"-", "0.0351866"}], ",", "0.08552114", ",", " ", "0"}], "}"}], 
+    ",", " ", 
+    RowBox[{"{", 
+     RowBox[{
+     "FromLShoulderRollToLElbowYaw", ",", " ", "FromLElbowRollToLWristYaw", 
+      ",", " ", "FromLWristYawToLHand"}], "}"}], ",", " ", 
+    "FromTorsoToLShoulderPitch"}], "]"}]}]], "Input",
  CellChangeTimes->{{3.715617429594514*^9, 3.7156175179042907`*^9}, {
    3.715617559389962*^9, 3.7156176197459135`*^9}, {3.7156177000550337`*^9, 
    3.715617702311671*^9}, 3.715617774463915*^9, {3.715617808835602*^9, 
    3.7156178537934904`*^9}, {3.7156184315466843`*^9, 3.715618463112486*^9}, {
-   3.7156187977193623`*^9, 3.7156188610295677`*^9}}],
+   3.7156187977193623`*^9, 3.7156188610295677`*^9}, {3.717606009114317*^9, 
+   3.7176060841587706`*^9}, {3.7176834056013947`*^9, 3.717683445138611*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"-", "0.48811065913043766`"}], ",", "0.06503762901086524`", ",", 
+     RowBox[{"-", "0.8703551523693617`"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.13207634115639158`", ",", "0.9912395472875063`", ",", "0.`"}], 
+    "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"0.8627304472139546`", ",", 
+     RowBox[{"-", "0.11495332403155899`"}], ",", 
+     RowBox[{"-", "0.49242452085990324`"}]}], "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{
+  3.7176903880979986`*^9, 3.717690476964342*^9, 3.7176905964982634`*^9, {
+   3.7176906347090397`*^9, 3.71769066226904*^9}, {3.717690904083886*^9, 
+   3.717690924094406*^9}, 3.717691013921564*^9, 3.717691076156858*^9, 
+   3.7176911475907974`*^9, 3.7176913340050173`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"-", "0.10799184568213724`"}], ",", "0.15377014462820493`", ",", 
+   "0.2838218702047052`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7176834059488173`*^9, {3.7176834398236*^9, 3.7176834459367137`*^9}, 
+   3.7176839518097143`*^9, 3.7176895411914945`*^9, 3.7176897094433155`*^9, {
+   3.7176897556727295`*^9, 3.7176897666266117`*^9}, 3.7176901483786907`*^9, 
+   3.717690388148534*^9, 3.7176904769673443`*^9, 3.717690596503768*^9, {
+   3.71769063471453*^9, 3.717690662274557*^9}, {3.71769090408939*^9, 
+   3.7176909241004105`*^9}, 3.717691013928707*^9, 3.7176910761653643`*^9, 
+   3.7176911475988035`*^9, 3.7176913340075083`*^9}]
+}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -652,30 +635,30 @@ Cell[BoxData[
         RowBox[{
          RowBox[{"-", 
           RowBox[{"Cos", "[", 
-           SubscriptBox["\[Theta]", "2"], "]"}]}], " ", 
+           SubscriptBox["\[Theta]", "1"], "]"}]}], " ", 
          RowBox[{"Sin", "[", 
-          SubscriptBox["\[Theta]", "1"], "]"}]}], 
+          SubscriptBox["\[Theta]", "2"], "]"}]}], 
         RowBox[{"Sin", "[", 
-         SubscriptBox["\[Theta]", "2"], "]"}]},
+         SubscriptBox["\[Theta]", "1"], "]"}]},
        {
         RowBox[{"Sin", "[", 
-         SubscriptBox["\[Theta]", "1"], "]"}], 
+         SubscriptBox["\[Theta]", "2"], "]"}], 
         RowBox[{"Cos", "[", 
-         SubscriptBox["\[Theta]", "1"], "]"}], "0"},
+         SubscriptBox["\[Theta]", "2"], "]"}], "0"},
        {
         RowBox[{
          RowBox[{"-", 
           RowBox[{"Cos", "[", 
-           SubscriptBox["\[Theta]", "1"], "]"}]}], " ", 
+           SubscriptBox["\[Theta]", "2"], "]"}]}], " ", 
          RowBox[{"Sin", "[", 
-          SubscriptBox["\[Theta]", "2"], "]"}]}], 
+          SubscriptBox["\[Theta]", "1"], "]"}]}], 
         RowBox[{
          RowBox[{"Sin", "[", 
           SubscriptBox["\[Theta]", "1"], "]"}], " ", 
          RowBox[{"Sin", "[", 
           SubscriptBox["\[Theta]", "2"], "]"}]}], 
         RowBox[{"Cos", "[", 
-         SubscriptBox["\[Theta]", "2"], "]"}]}
+         SubscriptBox["\[Theta]", "1"], "]"}]}
       },
       GridBoxAlignment->{
        "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, 
@@ -693,26 +676,26 @@ Cell[BoxData[
    MatrixForm[{{Cos[
         Subscript[$CellContext`\[Theta], 1]] Cos[
         Subscript[$CellContext`\[Theta], 2]], -Cos[
-        Subscript[$CellContext`\[Theta], 2]] Sin[
-        Subscript[$CellContext`\[Theta], 1]], 
-      Sin[
-       Subscript[$CellContext`\[Theta], 2]]}, {
-      Sin[
-       Subscript[$CellContext`\[Theta], 1]], 
-      Cos[
-       Subscript[$CellContext`\[Theta], 1]], 0}, {-Cos[
         Subscript[$CellContext`\[Theta], 1]] Sin[
-        Subscript[$CellContext`\[Theta], 2]], Sin[
+        Subscript[$CellContext`\[Theta], 2]], 
+      Sin[
+       Subscript[$CellContext`\[Theta], 1]]}, {
+      Sin[
+       Subscript[$CellContext`\[Theta], 2]], 
+      Cos[
+       Subscript[$CellContext`\[Theta], 2]], 0}, {-Cos[
+        Subscript[$CellContext`\[Theta], 2]] Sin[
+        Subscript[$CellContext`\[Theta], 1]], Sin[
         Subscript[$CellContext`\[Theta], 1]] Sin[
         Subscript[$CellContext`\[Theta], 2]], 
       Cos[
-       Subscript[$CellContext`\[Theta], 2]]}}]],
+       Subscript[$CellContext`\[Theta], 1]]}}]],
   Editable->False]], "Print",
  CellChangeTimes->{{3.7156130308967705`*^9, 3.7156130409566813`*^9}, 
    3.715613141900423*^9, {3.7156166765391192`*^9, 3.715616698656525*^9}, 
    3.7156168426635046`*^9, {3.715616873229925*^9, 3.7156168842259026`*^9}, 
    3.715617901661674*^9, {3.715617951039941*^9, 3.7156179612595162`*^9}, 
-   3.715618051362162*^9}],
+   3.715618051362162*^9, 3.717690797986368*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -786,7 +769,7 @@ Cell[BoxData[
    3.715613141900423*^9, {3.7156166765391192`*^9, 3.715616698656525*^9}, 
    3.7156168426635046`*^9, {3.715616873229925*^9, 3.7156168842259026`*^9}, 
    3.715617901661674*^9, {3.715617951039941*^9, 3.7156179612595162`*^9}, 
-   3.7156180513651514`*^9}],
+   3.715618051362162*^9, 3.7176907979903717`*^9}],
 
 Cell[BoxData[
  InterpretationBox[
@@ -832,15 +815,12 @@ Cell[BoxData[
    3.715613141900423*^9, {3.7156166765391192`*^9, 3.715616698656525*^9}, 
    3.7156168426635046`*^9, {3.715616873229925*^9, 3.7156168842259026`*^9}, 
    3.715617901661674*^9, {3.715617951039941*^9, 3.7156179612595162`*^9}, 
-   3.715618051367654*^9}]
+   3.715618051362162*^9, 3.717690797992873*^9}]
 }, Open  ]]
-}, Open  ]],
-
-Cell[BoxData["ElbowRotatio"], "Input",
- CellChangeTimes->{{3.715612963221003*^9, 3.7156129683801413`*^9}}]
+}, Open  ]]
 },
-WindowSize->{1366, 685},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{681, 676},
+WindowMargins->{{-7, Automatic}, {Automatic, 0}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (December 4, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -855,21 +835,24 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 11238, 280, 1192, "Input"],
-Cell[11799, 302, 1050, 22, 52, "Input"],
+Cell[558, 20, 9188, 229, 1232, "Input"],
 Cell[CellGroupData[{
-Cell[12874, 328, 152, 2, 31, "Input"],
-Cell[13029, 332, 9067, 227, 110, "Output"]
+Cell[9771, 253, 994, 19, 112, "Input"],
+Cell[10768, 274, 789, 18, 43, "Print"],
+Cell[11560, 294, 679, 12, 31, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22133, 564, 2893, 72, 252, "Input"],
+Cell[12276, 311, 152, 2, 31, "Input"],
+Cell[12431, 315, 9067, 227, 63, "Output"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[25051, 640, 2844, 74, 78, "Print"],
-Cell[27898, 716, 2826, 72, 78, "Print"],
-Cell[30727, 790, 1703, 44, 77, "Print"]
+Cell[21535, 547, 2893, 72, 272, "Input"],
+Cell[CellGroupData[{
+Cell[24453, 623, 2866, 74, 78, "Print"],
+Cell[27322, 699, 2848, 72, 78, "Print"],
+Cell[30173, 773, 1725, 44, 77, "Print"]
 }, Open  ]]
-}, Open  ]],
-Cell[32457, 838, 106, 1, 31, "Input"]
+}, Open  ]]
 }
 ]
 *)

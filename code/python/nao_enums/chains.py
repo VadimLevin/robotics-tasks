@@ -1,16 +1,9 @@
-from joints import Joints
-
-
 class Chains:
-    Head = [Joints.HeadPitch, Joints.HeadYaw]
-    LArm = [Joints.LShoulderRoll, Joints.LShoulderPitch, Joints.LElbowYaw,
-            Joints.LElbowRoll, Joints.LWristYaw, Joints.LHand]
-    RArm = [Joints.RShoulderRoll, Joints.RShoulderPitch, Joints.RElbowYaw,
-            Joints.RElbowRoll, Joints.RWristYaw, Joints.RHand]
-    LLeg = [Joints.LHipYawPitch, Joints.LHipPitch, Joints.LHipRoll,
-            Joints.LKneePitch, Joints.LAnklePitch, Joints.LAnkleRoll]
-    RLeg = [Joints.RHipPitch, Joints.RHipRoll, Joints.RKneePitch,
-            Joints.RAnklePitch, Joints.RAnkleRoll]
+    Head = "Head"
+    LArm = "LArm"
+    RArm = "RArm"
+    LLeg = "LLeg"
+    RLeg = "RLeg"
 
     def __init__(self):
         pass

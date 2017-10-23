@@ -9,7 +9,6 @@ class Joints:
     LElbowRoll = "LElbowRoll"
     LWristYaw = "LWristYaw"
     LHand = "LHand"
-    LArm = "LArm"
     # Right arm joints
     RShoulderRoll = "RShoulderRoll"
     RShoulderPitch = "RShoulderPitch"
@@ -17,7 +16,6 @@ class Joints:
     RElbowRoll = "RElbowRoll"
     RWristYaw = "RWristYaw"
     RHand = "RHand"
-    RArm = "RArm"
     # Pelvis joints
     # LHipYawPitch and RHipYawPitch are physically just one motor so they
     # cannot be controlled independently.   In case of conflicting orders,
